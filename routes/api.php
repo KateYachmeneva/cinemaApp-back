@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 //получение токена
 
+
+
 Route::post('/token/create', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
 
-//API администрирования
-Route::middleware('auth:sanctum')->get('/user', function () {
-    Route::apiResource('/session', \App\Http\Controllers\SessionController::class);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
